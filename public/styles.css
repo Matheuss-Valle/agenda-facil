@@ -1,0 +1,326 @@
+<style>
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  
+}
+
+.hero-section {
+  background: linear-gradient(to right, #0077cc, #00aaff);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 5px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-primary {
+  background-color: white;
+  color: #0077cc;
+}
+
+.btn-primary:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  color: #0077cc;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.info-box {
+  flex: 1 1 300px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #eef;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+footer {
+  background-color: #0077cc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 1.8em;
+  }
+
+  .info-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* Login Page Styles */
+.login-section {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px;  
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+}
+
+.login-box {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 40px 40px;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: #0077cc;
+}
+
+.login-box p {
+  margin-bottom: 30px;
+  color: #666;
+  font-size: 14px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+.login-box input:focus {
+  border-color: #00BFA6;
+  outline: none;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 14px;
+  background-color: #00BFA6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-box button:hover {
+  background-color: #009e8f;
+}
+
+.login-link {
+  display: block;
+  margin-top: 20px;
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* cadastro Page Styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
+  
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cadastro-wrapper {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.cadastro-box {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.cadastro-box h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: #0077cc;
+}
+
+.cadastro-box p {
+  margin-bottom: 30px;
+  color: #666;
+  font-size: 14px;
+}
+
+.cadastro-box input[type="text"],
+.cadastro-box input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+.cadastro-box input:focus {
+  border-color: #00BFA6;
+  outline: none;
+}
+
+.cadastro-box button {
+  width: 100%;
+  padding: 14px;
+  background-color: #00BFA6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cadastro-box button:hover {
+  background-color: #009e8f;
+}
+
+.cadastro-link {
+  display: block;
+  margin-top: 20px;
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.cadastro-link:hover {
+  text-decoration: underline;
+}
+
+
+.intro {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.intro h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #0078D7;
+  text-align: center;
+}
+
+.intro p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.intro ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.intro ul li {
+  font-size: 1.05em;
+  margin: 10px 0;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.intro ul li::before {
+  content: '✔️';
+  position: absolute;
+  left: 0;
+  color: #0078D7;
+}
+
+.intro strong {
+  color: #0078D7;
+}
+
+
+.calendar-instrucoes {
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+    }
+    #calendar {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 10px;
+    }
+ 
+

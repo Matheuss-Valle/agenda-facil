@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda Fácil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Agende suas consultas com facilidade</h1>
+      <p>Um sistema moderno para gerenciar seus atendimentos médicos.</p>
+      <h2>Olá, <%= username %>!</h2>
+      <a href="/logout" class="btn-secondary">Sair</a>
+    </div>
+  </section>
+
+  <div class="calendar-instrucoes">
+    <strong>Como usar:</strong>
+    <ul>
+      <li><b>Cadastrar:</b> Clique em um dia do calendário, informe o nome do paciente e a hora.</li>
+      <li><b>Editar:</b> Arraste o evento para outro dia/hora.</li>
+      <li><b>Excluir:</b> Clique no evento e confirme a exclusão.</li>
+      <li><b>Listar:</b> Todos os agendamentos aparecem no calendário.</li>
+    </ul>
+  </div>
+
+  <div id="calendar"></div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          locale: 'pt-br',
+          events: '/api/agendamentos',
+          selectable: true,
+          editable: true,
+          select: function(info) {
+              var paciente = prompt('Nome do paciente:');
+              var hora = prompt('Hora (HH:MM):');
+              if (paciente && hora) {
+                  fetch('/api/agendamentos', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                          data: info.startStr,
+                          hora: hora,
+                          paciente: paciente
+                      })
+                  })
+                  .then(res => res.json())
+                  .then(evento => {
+                      calendar.addEvent(evento);
+                  });
+              }
+          },
+          eventDrop: function(info) {
+              fetch('/api/agendamentos/' + info.event.id, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      data: info.event.startStr,
+                      hora: info.event.start.toISOString().substr(11,5),
+                      paciente: info.event.title
+                  })
+              });
+          },
+          eventClick: function(info) {
+              if (confirm('Excluir este agendamento?')) {
+                  fetch('/api/agendamentos/' + info.event.id, {
+                      method: 'DELETE'
+                  })
+                  .then(() => {
+                      info.event.remove();
+                  });
+              }
+          }
+      });
+      calendar.render();
+  });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Sistema de Agendamentos. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

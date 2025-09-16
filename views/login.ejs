@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Usuário</title>
+  <link rel="stylesheet" href="/styles.css">  
+</head>
+<body>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Agende suas consultas com facilidade</h1>
+      <p>Um sistema moderno para gerenciar seus atendimentos médicos.</p>
+      <a href="/login" class="btn-primary">Entrar</a>
+      <a href="/cadastro" class="btn-secondary">Cadastrar</a>
+    </div>
+  </section>
+  <section class="login-section">
+  
+  <div class="login-box">
+    <img src="/images/logo.png" alt="Logo da Clínica" class="login-logo">
+    <h2>Bem-vindo de volta</h2>
+    <p>Faça login para acessar sua conta</p>
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Usuário" required>
+      <input type="password" name="password" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <a href="/cadastro" class="login-link">Não tem conta? Cadastre-se</a>
+  </div>
+ 
+</section>
+  
+  <footer>
+    <p>&copy; 2025 Sistema de Agendamentos. Todos os direitos reservados.</p>
+  </footer>  
+</body>
+</html>
