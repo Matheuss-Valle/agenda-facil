@@ -32,35 +32,53 @@
   <div id="calendar"></div>
 
   <script>
+
+    //notificação na tela
+    function mostrarToast(mensagem, cor = "#4CAF50") {
+    Toastify({
+      text: mensagem,
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      backgroundColor: cor,
+      close: true,
+      stopOnFocus: true
+    }).showToast();
+  }
+
+
   document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
           locale: 'pt-br',
-          events: '/api/agendamentos',
+          events: '/agendamentos/api/agendamentos',
           selectable: true,
           editable: true,
           select: function(info) {
               var paciente = prompt('Nome do paciente:');
               var hora = prompt('Hora (HH:MM):');
+              var telefone = prompt('Telefone:');
               if (paciente && hora) {
-                  fetch('/api/agendamentos', {
+                  fetch('/agendamentos/api/agendamentos', {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({
                           data: info.startStr,
                           hora: hora,
-                          paciente: paciente
+                          paciente: paciente,
+                          telefone: telefone
                       })
                   })
                   .then(res => res.json())
                   .then(evento => {
                       calendar.addEvent(evento);
+                      mostrarToast('✅ Agendamento criado com sucesso!');
                   });
               }
           },
           eventDrop: function(info) {
-              fetch('/api/agendamentos/' + info.event.id, {
+              fetch('/agendamentos/api/agendamentos/' + info.event.id, {
                   method: 'PUT',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
@@ -69,14 +87,16 @@
                       paciente: info.event.title
                   })
               });
+              mostrarToast('✏️ Agendamento atualizado com sucesso!', '#2196F3');
           },
           eventClick: function(info) {
               if (confirm('Excluir este agendamento?')) {
-                  fetch('/api/agendamentos/' + info.event.id, {
+                  fetch('/agendamentos/api/agendamentos/' + info.event.id, {
                       method: 'DELETE'
                   })
                   .then(() => {
                       info.event.remove();
+                      mostrarToast('🗑️ Agendamento excluído com sucesso!', '#FF5722');
                   });
               }
           }
@@ -88,5 +108,11 @@
   <footer>
     <p>&copy; 2025 Sistema de Agendamentos. Todos os direitos reservados.</p>
   </footer>
+
+  <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 </body>
 </html>
