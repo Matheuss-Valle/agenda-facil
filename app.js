@@ -9,13 +9,13 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 // Rotas
 const authRoutes = require('./routes/authRoutes');
 const agendamentoRoutes = require('./routes/agendamentoRoutes');
-const Agendamento = require('./models/agendamento'); // 🔥 IMPORTANTE
+const Agendamento = require('./models/agendamento');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ======== Conexão MongoDB ========
-mongoose.connect('mongodb://localhost:27017/agendamentoDB', {
+mongoose.connect('mongodb+srv://matheussvalle29_db_user:teste123@cluster0.x4lzavf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost:27017/agendamentoDB', {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({
-  secret: 'sua_chave_secreta',
+  secret: 'chave_secreta',
   resave: false,
   saveUninitialized: true
 }));
